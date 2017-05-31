@@ -1,0 +1,26 @@
+{
+  "name": "vtl-kit",
+  "version": "0.0.1",
+  "bin": {
+    "vlt": "./bin/www"
+  },
+  "description": "a kit to generate velocity dev env",
+  "scripts": {
+    "start": "node ./bin/www",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "liberalist",
+  "license": "MIT",
+
+  "main": "index.js",
+  "keywords": [
+    "kit",
+    "velocity",
+    "webpack"
+  ],
+  "devDependencies": {
+    "commander": "^2.9.0",
+    "shelljs": "^0.7.4",
+    "sfconsole": "^0.0.6"
+  }
+}

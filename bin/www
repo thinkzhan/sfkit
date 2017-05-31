@@ -1,0 +1,12 @@
+#!/usr/bin/env node
+
+var program = require('commander');
+var pkg = require('../package.json');
+
+program.version(pkg.version)
+	.option('-t, --to <n>', 'name of project seed')
+	.parse(process.argv);
+
+require('../index').init({
+	to: program.to || ''
+});
