@@ -4,9 +4,7 @@ var program = require('commander');
 var pkg = require('../package.json');
 
 program.version(pkg.version)
-	.option('-t, --to <n>', 'name of project seed')
+	.option('--init', 'single-js|velocity-mutil-page|mdev-mutil-page')
 	.parse(process.argv);
 
-require('../index').init({
-	to: program.to || ''
-});
+require('../index').init({});

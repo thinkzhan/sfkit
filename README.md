@@ -1,5 +1,5 @@
 ```
-    npm install -g vtl-kit
+    npm install -g sf-kit
 
-    vtl -t proj
+    sf
 ```

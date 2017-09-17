@@ -6,7 +6,9 @@ const inquirer = require('inquirer')
 const gitRepoMap = {
     'single-js': 'https://github.com/liberalist1991/single-js.git',
     'velocity-mutil-page': 'https://github.com/liberalist1991/velocity-mutil-page.git',
-    'mdev-mutil-page': 'https://github.com/liberalist1991/mdev-mutil-page.git'
+    'mdev-mutil-page': 'https://github.com/liberalist1991/mdev-mutil-page.git',
+    'mdev-mutil-page-h5': 'https://github.com/liberalist1991/mdev-mutil-page-h5.git'
+
 }
 
 module.exports = {
@@ -20,15 +22,12 @@ module.exports = {
                 this.askName().then(answers => {
                     this.projectName = answers.projectName || this.template;
 
-                    console.log(this.template);
-                    console.log(this.projectName);
-
-                    console.info('init seed....');
+                    console.warn('init seed....');
                     exec(`git clone ${gitRepoMap[this.template]} ${this.projectName}`);
 
-                    console.info('install dependencies....');
+                    console.warn('install dependencies...  several minutes');
                     exec(`cd ${this.projectName} && npm install`);
-                    console.info(`init ${this.projectName} ok! cd ${this.projectName} && npm run dev`);
+                    console.warn(`init ${this.projectName} ok! cd ${this.projectName} && npm run dev`);
 
                 });
 
@@ -54,6 +53,10 @@ module.exports = {
                         key: 'c',
                         name: 'mdev-mutil-page             一个兼容mdev的多页项目',
                         value: 'mdev-mutil-page'
+                    }, {
+                        key: 'd',
+                        name: 'mdev-mutil-page-h5             一个兼容mdev的多页h5项目',
+                        value: 'mdev-mutil-page-h5'
                     }
 
                 ]
