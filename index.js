@@ -1,54 +1,39 @@
 require('shelljs/global');
 const console = require('sfconsole')("vtl-kit", true);
 const inquirer = require('inquirer')
-
 const tplMap = require('./map')
 
 module.exports = {
     template: '',
     projectName: '',
 
-    init(opts) {
-
+    init() {
         this.askTemplate().then(answers => {
             this.template = answers.template;
-
             return this.askName()
-
         }).then(answers => {
             this.projectName = answers.projectName || this.template;
-
             console.info('init seed....');
-
             exec(
                 `git clone ${tplMap[this.template]['repo']} ${this.projectName}`
             );
-
             console.warn('install dependencies...  several minutes');
-
             exec(`cd ${this.projectName} && npm install`);
-
             console.warn(
                 `init ${this.projectName} ok! cd ${this.projectName} && npm run dev`
             );
-
         });
-
-
     },
 
     askName() {
-
         return inquirer.prompt([{
             type: 'input',
             name: 'projectName',
             message: '输入项目名称：'
         }])
-
     },
 
     askTemplate() {
-
         let choices = [];
 
         Object.keys(tplMap).forEach((key, index) => {
