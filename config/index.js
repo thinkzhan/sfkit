@@ -12,7 +12,7 @@ module.exports = {
         assetsSubDirectory: 'static',
         assetsPublicPath: '/',
         proxyTable: {
-            '/login': ''
+            '___': ''
         },
 
         // Various Dev Server settings

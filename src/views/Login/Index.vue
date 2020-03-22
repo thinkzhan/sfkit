@@ -81,7 +81,7 @@ input:-webkit-autofill
         text-align center
         line-height 200px
         .logo
-            background url('./images/logo.png') no-repeat
+            background url('../Layout/images/logo.png') no-repeat
             background-size 185px 40px
             display inline-block
             width 185px

@@ -110,7 +110,7 @@ exports.watch = {
   width: 150px;
   height: 30px;
   vertical-align: middle;
-  background: url('./images/logo.png') no-repeat;
+  background: url('../images/logo.png') no-repeat;
   background-size: 130px 28px;
 }
 .info {
@@ -134,7 +134,7 @@ exports.watch = {
   width: 9px;
   height: 5px;
   border-right: solid 1px #666666;
-  background: url('./images/arrow.png') center no-repeat;
+  background: url('../images/arrow.png') center no-repeat;
   vertical-align: middle;
 }
 .name .company {
@@ -151,7 +151,7 @@ exports.watch = {
   padding: 0px 11px;
   width: 24px;
   height: 21px;
-  background: url('./images/home.png') center no-repeat;
+  background: url('../images/home.png') center no-repeat;
   vertical-align: middle;
 }
 .message {
@@ -161,7 +161,7 @@ exports.watch = {
   width: 22px;
   height: 20px;
   border-left: solid 1px #666666;
-  background: url('./images/message.png') center no-repeat;
+  background: url('../images/message.png') center no-repeat;
   vertical-align: middle;
 }
 .info .button {
@@ -191,11 +191,11 @@ exports.watch = {
 }
 .info .button.help-wrap .icon {
   width: 17px;
-  background: url('./images/help.png') no-repeat;
+  background: url('../images/help.png') no-repeat;
 }
 .info .button.setting-wrap .icon {
   width: 20px;
-  background: url('./images/setting.png') no-repeat;
+  background: url('../images/setting.png') no-repeat;
 }
 .info .button.setting-wrap {
   margin-left: 10px;
