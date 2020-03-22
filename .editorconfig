@@ -11,8 +11,9 @@ trim_trailing_whitespace = true
 [*.js]
 quote_type = single
 
-[*.{html,less,css,json}]
+[*.{html,scss,css,json}]
 quote_type = double
+indent_size = 4
 
 [*.vue]
 quote_type = single

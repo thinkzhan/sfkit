@@ -3,7 +3,6 @@ node_modules/
 /dist/
 package-lock.json
 npm-debug.log*
-fe-node
 # Editor directories and files
 .idea
 .vscode

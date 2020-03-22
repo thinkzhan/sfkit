@@ -1,5 +1,4 @@
-
-
+'use strict';
 const path = require('path');
 const utils = require('./utils');
 const config = require('../config');
@@ -23,12 +22,7 @@ const createLintingRule = () => ({
 
 module.exports = {
     context: path.resolve(__dirname, '../'),
-    entry: {
-        app: [
-            'es6-promise',
-            './src/main.js'
-        ]
-    },
+    entry: utils.entries(),
     output: {
         path: config.build.assetsRoot,
         filename: '[name].js',
@@ -47,9 +41,7 @@ module.exports = {
             'com': resolve('src/components'),
             'serv': resolve('src/service'),
             'api': resolve('src/api'),
-            'store': resolve('src/store'),
-            'mixin': resolve('src/mixins'),
-            'conf': resolve('src/config')
+            'store': resolve('src/store')
         }
     },
     module: {
@@ -88,6 +80,10 @@ module.exports = {
                     limit: 999999999,
                     name: utils.assetsPath('font/[name].[ext]')
                 }
+            },
+            {
+                test: /\.html$/,
+                loader: 'html-withimg-loader'
             }
         ]
     },

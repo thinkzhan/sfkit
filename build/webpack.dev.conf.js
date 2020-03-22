@@ -31,7 +31,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
         rules: utils.styleLoaders({
             sourceMap: config.dev.cssSourceMap,
             usePostCSS: true
-        })
+        }).concat(utils.vmLoaders())
     },
     // cheap-module-eval-source-map is faster for development
     devtool: config.dev.devtool,
@@ -40,10 +40,9 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     devServer: {
         clientLogLevel: 'warning',
         historyApiFallback: {
-            rewrites: [
-                { from: /.*/, to: path.posix.join(config.dev.assetsPublicPath, 'index.html') }
-            ]
+            index: './dist/list.html'
         },
+
         hot: true,
         // contentBase: false, // since we use CopyWebpackPlugin.
         compress: true,
@@ -60,8 +59,8 @@ const devWebpackConfig = merge(baseWebpackConfig, {
         watchOptions: {
             poll: config.dev.poll
         },
-        after: function(app) {
-            app.use('/lib', express.static('./src/lib'));
+        before(app) {
+            utils.generateIndex();
         },
         headers: {
             'Access-Control-Allow-Origin': '*',
@@ -76,13 +75,8 @@ const devWebpackConfig = merge(baseWebpackConfig, {
         }),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NamedModulesPlugin(), // HMR shows correct file names in console on update.
-        new webpack.NoEmitOnErrorsPlugin(),
-        new HtmlWebpackPlugin({
-            filename: 'index.html',
-            template: 'index.html',
-            inject: true
-        })
-    ]
+        new webpack.NoEmitOnErrorsPlugin()
+    ].concat(utils.htmlPlugin())
 });
 
 module.exports = new Promise((resolve, reject) => {

@@ -21,18 +21,6 @@ Object.keys(map).map(rule => {
                 createMockSync(path.join(__dirname, '../', req.url));
             }
         }
-        // 去除HttpOnly
-        // onProxyRes: function(proxyRes, req, res) {
-        //     var cookie = proxyRes.headers['set-cookie'];
-        //     if(cookie) {
-        //         proxyRes.headers['set-cookie'] = cookie.map(sc => {
-        //             return sc.split('; ')
-        //                 .filter(v => v != 'HttpOnly')
-        //                 .join('; ');
-        //         });
-        //         console.log('res[\'set-cookie\']', proxyRes.headers['set-cookie'] );
-        //     }
-        // }
     });
 });
 /* mock 数据*/

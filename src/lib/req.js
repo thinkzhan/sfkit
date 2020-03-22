@@ -5,10 +5,7 @@
  *** ---after---
  *** list: req.get(`/list`)
  **/
-import sfax from 'sfax';
-import fetch from 'lib/fetch';
-import { domain } from 'conf/domain';
-sfax.baseUrl = domain;
+import fetch from './fetch';
 
 const req = {};
 ['get', 'post', 'jsonp'].forEach(method => {
