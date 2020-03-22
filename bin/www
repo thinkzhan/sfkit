@@ -1,11 +1,8 @@
 #!/usr/bin/env node
+const Kit = require("../index")
+const offline = process.argv && !!process.argv.find(a => a === 'offline')
+async function run() {
+    await new Kit().init({ offline })
+}
+run()
 
-var program = require("commander");
-var pkg = require("../package.json");
-
-program
-    .version(pkg.version)
-    .option("--init", "single-js|velocity-mutil-page|mdev-mutil-page")
-    .parse(process.argv);
-
-require("../index").init({});

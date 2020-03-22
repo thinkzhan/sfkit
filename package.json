@@ -1,22 +1,30 @@
 {
     "name": "sf-kit",
-    "version": "0.0.8",
+    "version": "0.0.9",
     "bin": {
         "sf": "./bin/www"
     },
-    "description": "a kit to generate velocity dev env",
+    "description": "cli",
     "scripts": {
         "start": "node ./bin/www",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
-    "author": "liberalist",
+    "author": "thinkzhan",
     "license": "MIT",
     "main": "index.js",
-    "keywords": ["cli", "kit", "webpack"],
+    "keywords": [
+        "cli",
+        "kit",
+        "webpack"
+    ],
     "dependencies": {
+        "axios": "^0.19.2",
         "commander": "^2.9.0",
+        "download-git-repo": "^3.0.2",
         "inquirer": "^3.2.3",
+        "ora": "^4.0.3",
         "sfconsole": "^0.0.6",
-        "shelljs": "^0.7.4"
+        "shelljs": "^0.7.4",
+        "util": "^0.12.2"
     }
 }
