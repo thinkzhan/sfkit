@@ -1,15 +1,14 @@
-<template lang="pug">
-    div#app
-        <!-- admin-ui组件来自router/index.js注册focus-admin-ui -->
-        admin-ui(:config="config")
-            router-view
-</template>
 <script>
 export default {
-    computed: {
-        config() {
-            return this.$store.getters.config;
-        }
-    }
+    methods: {},
+    created() {}
 };
 </script>
+
+<style lang="scss">
+page {
+    height: 100%;
+    width: 100%;
+    background: rgba(248, 248, 248, 1);
+}
+</style>

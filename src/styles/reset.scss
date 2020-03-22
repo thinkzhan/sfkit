@@ -1,0 +1,49 @@
+@import "@/styles/common.scss";
+
+* {
+    box-sizing: border-box;
+}
+
+page {
+    @include m-r1bt(#e5e5e5);
+
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    button {
+        // 去除边框
+        &::after {
+            display: none;
+        }
+    }
+    ::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+        color: transparent;
+    }
+}
+
+.flex {
+    display: -webkit-box !important;
+    display: -webkit-flex !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+.flex > .cell {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    width: 0;
+    -webkit-flex-basis: 0;
+    -ms-flex-preferred-size: 0;
+    flex-basis: 0;
+    max-width: 100%;
+    display: block;
+    padding: 0 !important;
+    position: relative;
+    text-align: left;
+}

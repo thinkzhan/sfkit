@@ -1,59 +1,35 @@
 import Vue from 'vue';
-import element from 'element-ui';
-import router from './router';
+import App from './App';
 import store from './store';
-import app from './app.vue';
-import Service from 'serv';
-import TableSearch from 'com/TableSearch/TableSearch';
-import authDirective from './directive/auth';
-import hasAuth from 'lib/hasAuth';
 
-import 'style/index.scss';
+import './styles/reset.scss';
+import './styles/var.scss';
+import './styles/common.scss';
 
-// vue
-Vue.config.devtools = true;
-Vue.use(element);
-Vue.prototype.notifyOk = txt => {
-    Vue.prototype.$notify({
-        title: '成功',
-        message: txt,
-        type: 'success',
-        duration: 1000
-    });
-};
-Vue.prototype.notifyErr = txt => {
-    Vue.prototype.$notify({
-        title: '错误',
-        message: txt,
-        type: 'error',
-        duration: 1000
+Vue.config.productionTip = false;
+App.mpType = 'app';
+
+Vue.prototype.$store = store;
+
+Vue.prototype.showToast = msg => {
+    wx.showToast({
+        title: msg,
+        icon: 'none',
+        duration: 2000
     });
 };
 
-Vue.prototype.$serv = Service;
-
-Vue.prototype.$auth = function(action = 'add') {
-    if (this.$route.meta && this.$route.meta.btnPermission) {
-        return this.$route.meta.btnPermission[action];
-    } else {
-        return hasAuth();
-    }
+Vue.prototype.wxPromise = (api, params = {}) => {
+    return new Promise((resolve, reject) => {
+        params.success = res => {
+            resolve(res);
+        };
+        params.fail = error => {
+            reject(error);
+        };
+        wx[api](params);
+    });
 };
 
-Vue.component('TableSearch', TableSearch);
-
-authDirective(Vue);
-
-new Vue({
-    el: '#app',
-    data: {
-        Bus: new Vue()
-    },
-    router,
-    store,
-    render(fn) {
-        return fn(app);
-    }
-});
-// hide loading
-window.document.getElementById('loading').style.display = 'none';
+const app = new Vue(App);
+app.$mount();

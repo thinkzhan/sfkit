@@ -1,21 +1,33 @@
-## 说明
+# applet-dsp-agent
 
-权限后台
+> A Mpvue project
 
-### 描述
+## Build Setup
 
-- api目录下只描述api列表，接口统一通过this.$serv调用，插件已注入，无需依赖。错误处理（如非200）已在lib/fetch统一处理，比较脏的数据处理可放在service处理
+``` bash
+# 安装依赖
+npm i
 
-- config/domain下定义所有接口域名，本地可选择开启prxoy模式，/MOCK前缀的路径自动开启mock模式, 请求路径对应mock目录下文件
+# 开发时构建
+npm dev
 
+# 打包构建
+npm build
 
-### 权限控制
+# 指定平台的开发时构建(微信、百度、头条、支付宝)
+npm dev:wx
+npm dev:swan
+npm dev:tt
+npm dev:my
 
-- `router/index` 定义了页面权限和操作按钮权限
-- `router/interceptor` 动态控制了页面权限
-- 按钮权限通过指令 `v-auth="'add'"`或者 `v-if="$auth('add')"`添加
+# 指定平台的打包构建
+npm build:wx
+npm build:swan
+npm build:tt
+npm build:my
 
+# 生成 bundle 分析报告
+npm run build --report
+```
 
-
-
-
+For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).

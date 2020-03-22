@@ -1,8 +1,2 @@
-/build/
-/config/
-/dist/
-/node_modules/
-/mock/
-/publish/
-/**/ui.js
-/src/lib/
+build/*.js
+config/*.js
