@@ -1,7 +1,7 @@
 ### usage
 
 ```
-    npm install -g sf-kit
+    npm install -g sfcli
 
-    sf
+    sfcli
 ```

@@ -1,6 +1,6 @@
 {
     "name": "sf-kit",
-    "version": "0.0.9",
+    "version": "1.0.2",
     "bin": {
         "sf": "./bin/www"
     },
@@ -12,14 +12,19 @@
     "author": "thinkzhan",
     "license": "MIT",
     "main": "index.js",
+    "files": [
+        "bin",
+        "index.js",
+        "offline.js",
+        "package.json",
+        "README.md"
+    ],
     "keywords": [
         "cli",
-        "kit",
-        "webpack"
+        "kit"
     ],
     "dependencies": {
         "axios": "^0.19.2",
-        "commander": "^2.9.0",
         "download-git-repo": "^3.0.2",
         "inquirer": "^3.2.3",
         "ora": "^4.0.3",
