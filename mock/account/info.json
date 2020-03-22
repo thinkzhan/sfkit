@@ -1,0 +1,10 @@
+{
+    "msg":"success",
+    "code":200,
+    "data": {
+        "username":"test@qq.com",
+        "showname":"test",
+        "type":1
+    }
+}
+

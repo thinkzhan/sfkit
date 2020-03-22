@@ -1,0 +1,19 @@
+{
+    "code":200,
+    "data": {
+        "totalCount":1,
+        "totalPage":1,
+        "ext":null,
+        "pageSize":10,
+        "currentPage":1,
+        "hasNext":false,
+        "list": [
+             {
+                "account":"test@qq.com",
+                "name":"test",
+                "status": "正常"
+            }
+        ]
+    }
+}
+
