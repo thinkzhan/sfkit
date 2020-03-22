@@ -10,8 +10,6 @@ export const getComponentName = type => {
             return 'el-radio-group';
         case 'inputsearch':
             return 'el-input';
-        case 'textarea':
-            return 'el-input';
         default:
             return `el-${type}`;
     }
@@ -24,38 +22,30 @@ export const getChildName = type => {
             return 'el-checkbox';
         case 'radio':
             return 'el-radio';
-        case 'table':
-            return 'el-table-column';
         default:
             return null;
     }
 };
-export const getStyle = (type, ui) => {
+export const getStyle = type => {
     switch (type) {
         case 'select':
             return {
-                width: ui && ui.itemWidth ? ui.itemWidth : '120px'
+                width: '120px'
             };
         case 'input':
             return {
-                width: ui && ui.itemWidth ? ui.itemWidth : '140px'
+                width: '140px'
             };
         case 'inputsearch':
             return {
-                width: ui && ui.itemWidth ? ui.itemWidth :'280px'
+                width: '280px'
             };
         case 'daterange':
             return {
-                width: ui && ui.itemWidth ? ui.itemWidth : '290px'
-            };
-        case 'search-tree':
-            return {
-                width: ui && ui.itemWidth ? ui.itemWidth : '295px'
+                width: '290px'
             };
         default:
-            return {
-                width: ui && ui.itemWidth ? ui.itemWidth : ''
-            };
+            return {};
     }
 };
 
@@ -90,14 +80,6 @@ export const getProps = type => {
                     'default-time': ['00:00:00', '23:59:59'],
                     align: "left",
                     editable: false
-                }
-            };
-            break;
-        case 'textarea':
-            props = {
-                ...props,
-                ...{
-                    type: 'textarea'
                 }
             };
             break;

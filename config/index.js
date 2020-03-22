@@ -1,4 +1,5 @@
-'use strict';
+
+
 // Template version: 1.2.8
 // see http://vuejs-templates.github.io/webpack for documentation.
 
@@ -11,14 +12,15 @@ module.exports = {
         assetsSubDirectory: 'static',
         assetsPublicPath: '/',
         proxyTable: {
-        // '': ''
+            '/login': ''
         },
+
         // Various Dev Server settings
         // host: '10.0.121.169', // for mobile phone debug
         // host: 'some.focus-test.cn', // can be overwritten by process.env.HOST
         // host: 'localhost', // can be overwritten by process.env.HOST
-        host: getIPAdress() || 'localhost',
-        port: 2334, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
+        host: getIPAdress(),
+        port: 2333, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
         autoOpenBrowser: true,
         errorOverlay: true,
         notifyOnErrors: true,

@@ -53,8 +53,10 @@ export default {
                 minWidth: 90
             }, {
                 label: "角色",
-                prop: "roleDesc",
-                minWidth: 90
+                prop: "role",
+                format(v) {
+                    return v + '格式化...'
+                }
             }, {
                 label: "操作",
                 width: 200,
@@ -123,7 +125,6 @@ export default {
             :addDataAPI="addDataAPI"
             )
             template(slot="operate"  slot-scope="scope")
-                el-button(type="primary"       @click="scope.search") 查询
                 el-button.f-right(
                     type="primary"
                     @click="scope.showDialog({title:'添加权限'})") 添加权限

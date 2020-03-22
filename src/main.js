@@ -1,59 +1,68 @@
 import Vue from 'vue';
 import element from 'element-ui';
-import router from './router';
-import store from './store';
-import app from './app.vue';
-import Service from 'serv';
-import TableSearch from 'com/TableSearch/TableSearch';
-import authDirective from './directive/auth';
-import hasAuth from 'lib/hasAuth';
+import VueRouter from 'vue-router';
 
-import 'style/index.scss';
+import validate from 'vue-validator-help';
+import selecter from 'com/selecter/selecter.vue';
+import checkbox from 'com/checkbox/checkbox.vue';
+import button from 'com/button/button.vue';
+import TableSearch from 'com/TableSearch/TableSearch';
+import Service from 'serv';
+
+import routes from './router/config';
+import store from './store';
+import interceptor from './router/interceptor';
+
+require('./style/index.scss');
+
+const Alert = require('com/alert/index');
+const Confirm = require('com/confirm/index');
+
+const app = require('./app.vue');
+
+const router = new VueRouter({
+    mode: 'hash',
+    routes
+});
 
 // vue
 Vue.config.devtools = true;
 Vue.use(element);
-Vue.prototype.notifyOk = txt => {
-    Vue.prototype.$notify({
-        title: '成功',
-        message: txt,
-        type: 'success',
-        duration: 1000
-    });
-};
-Vue.prototype.notifyErr = txt => {
-    Vue.prototype.$notify({
-        title: '错误',
-        message: txt,
-        type: 'error',
-        duration: 1000
-    });
-};
+Vue.use(VueRouter);
+Vue.use(validate);
 
+Vue.prototype.$notifyErr = function(msg) {
+    Alert({
+        type: 'error',
+        message: msg
+    });
+};
+Vue.prototype.$notifyOk = function(msg) {
+    Alert({
+        type: 'success',
+        message: msg
+    });
+};
+Vue.prototype.$alert = Alert;
+Vue.prototype.$confirm = Confirm;
 Vue.prototype.$serv = Service;
 
-Vue.prototype.$auth = function(action = 'add') {
-    if (this.$route.meta && this.$route.meta.btnPermission) {
-        return this.$route.meta.btnPermission[action];
-    } else {
-        return hasAuth();
-    }
-};
-
+Vue.component('selecter', selecter);
+Vue.component('checkbox', checkbox);
+Vue.component('txt-button', button);
+Vue.component('txt-button', button);
 Vue.component('TableSearch', TableSearch);
 
-authDirective(Vue);
+interceptor(router);
 
 new Vue({
     el: '#app',
-    data: {
-        Bus: new Vue()
-    },
     router,
     store,
     render(fn) {
         return fn(app);
     }
 });
+
 // hide loading
 window.document.getElementById('loading').style.display = 'none';

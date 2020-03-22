@@ -7,13 +7,17 @@ const Service = proxy({}, {
 Service.method()
 **/
 export default function(service, api) {
-    return new Proxy(service, {
-        get(target, key, receiver) {
-            if (!service[key]) {
-                return api[key];
+    if (window.Proxy) {
+        return new Proxy(service, {
+            get(target, key, receiver) {
+                if (!service[key]) {
+                    return api[key];
+                }
+                return Reflect.get(target, key, receiver);
             }
-            return Reflect.get(target, key, receiver);
-        }
-    });
+        });
+    } else {
+        return Object.assign({}, api, service)
+    }
 }
 

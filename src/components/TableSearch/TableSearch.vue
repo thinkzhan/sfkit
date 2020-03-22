@@ -5,7 +5,7 @@
                 :config="searchConfig"
                 v-model="searchOptions"
                 @change="onSearchChange"
-                @inited="search"
+                @inited="searchClick"
             )
             template(v-if="!hideOperate")
                 slot(
@@ -36,7 +36,7 @@
                     :align="column.align || 'center'"
                     :fixed="column.fixed"
                     header-align="center"
-                    show-overflow-tooltip
+                    :show-overflow-tooltip="false"
                     )
                     template(slot-scope="scope" )
                         template(
@@ -57,7 +57,7 @@
             v-if="!hidePagenation && tableList.length > 0"
             @size-change="handleSizeChange"
             @current-change="handleCurrentChange"
-            :current-page="pageInfo.page"
+            :current-page="pageInfo.pageNo"
             :page-size="pageInfo.pageSize"
             :page-sizes="[10, 20, 30, 50]"
             layout="total,sizes, prev, pager, next, jumper"
@@ -176,7 +176,6 @@ export default {
             if (d.cache) {
                 this.cacheModelList[d.model] = true;
                 const cache  = localStorage.getItem(`${this.$route.path}--${d.model}`);
-                console.log('cache', d.model, cache);
                 if (cache) {
                     d.modelValue = String(cache);
                 }
@@ -193,7 +192,7 @@ export default {
 .table-search
     &__options
         position: relative
-        // overflow: hidden
+        overflow: hidden
         margin-top: 30px
         &--item
             float: left

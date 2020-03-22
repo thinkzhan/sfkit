@@ -1,4 +1,5 @@
-'use strict';
+
+
 const path = require('path');
 const config = require('../config');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -35,7 +36,7 @@ exports.cssLoaders = function(options) {
 
         if (loader) {
             loaders.push({
-                loader: loader + '-loader',
+                loader: `${loader  }-loader`,
                 options: Object.assign({}, loaderOptions, {
                     sourceMap: options.sourceMap
                 })
@@ -49,9 +50,8 @@ exports.cssLoaders = function(options) {
                 use: loaders,
                 fallback: 'vue-style-loader'
             });
-        } else {
-            return ['vue-style-loader'].concat(loaders);
         }
+            return ['vue-style-loader'].concat(loaders);
     }
 
     // https://vue-loader.vuejs.org/en/configurations/extract-css.html
@@ -74,7 +74,7 @@ exports.styleLoaders = function(options) {
     for (const extension in loaders) {
         const loader = loaders[extension];
         output.push({
-            test: new RegExp('\\.' + extension + '$'),
+            test: new RegExp(`\\.${extension }$`),
             use: loader
         });
     }
@@ -93,7 +93,7 @@ exports.createNotifierCallback = () => {
 
         notifier.notify({
             title: packageConfig.name,
-            message: severity + ': ' + error.name,
+            message: `${severity }: ${error.name}`,
             subtitle: filename || '',
             icon: path.join(__dirname, 'logo.png')
         });

@@ -1,15 +1,14 @@
-<template lang="pug">
-    div#app
-        <!-- admin-ui组件来自router/index.js注册focus-admin-ui -->
-        admin-ui(:config="config")
-            router-view
+<template>
+    <div id="app">
+        <keep-alive>
+            <router-view></router-view>
+        </keep-alive>
+    </div>
 </template>
-<script>
-export default {
-    computed: {
-        config() {
-            return this.$store.getters.config;
-        }
+<style scoped>
+    #app {
+        height: 100%;
     }
-};
+</style>
+<script>
 </script>

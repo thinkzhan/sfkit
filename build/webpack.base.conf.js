@@ -1,4 +1,5 @@
-'use strict';
+
+
 const path = require('path');
 const utils = require('./utils');
 const config = require('../config');
@@ -46,7 +47,9 @@ module.exports = {
             'com': resolve('src/components'),
             'serv': resolve('src/service'),
             'api': resolve('src/api'),
-            'store': resolve('src/store')
+            'store': resolve('src/store'),
+            'mixin': resolve('src/mixins'),
+            'conf': resolve('src/config')
         }
     },
     module: {

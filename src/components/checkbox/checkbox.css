@@ -1,0 +1,15 @@
+.check-item {
+    display: inline-block;
+    margin: 0px 10px 20px 0px;
+    padding: 5px 6px;
+    height: 24px;
+    box-sizing: border-box;
+    border: 1px solid #D5D5D5;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+}
+.check-item.checked {
+    border-color: #EE4433;
+    color: #EE4433;
+}

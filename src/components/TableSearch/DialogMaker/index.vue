@@ -20,7 +20,8 @@
 el-dialog.dialog.dialog-edit(
   :title="config.title"
   :visible.sync="config.visible"
-  :width="config.width"
+  :width="config.width || '440px'"
+  :append-to-body="true"
   :close-on-click-modal="false"
   )
     slot(:dialogConfig="config")

@@ -4,7 +4,6 @@ import { Loading } from 'element-ui';
  *** this.search() 查询参数的绑定数值改变不影响 比如翻页
  *** this.deleteRow(row, index) 删除表格中某一行
  * */
-
 export default {
     data() {
         return {
@@ -16,8 +15,8 @@ export default {
 
             pageInfo: {
                 itemCount: 0,
-                page: +this.getCache('page') || 1,
-                pageSize: +this.getCache('pageSize') || 10
+                page: 1,
+                pageSize: 10
             }
         };
     },
@@ -30,25 +29,19 @@ export default {
             this.searchOptions = Object.assign({}, this.searchOptions, params);
         },
         handleSizeChange(val) {
-            this.setCache('pageSize', val);
             this.pageInfo.pageSize = val;
             this.pageInfo.page = 1;
             this.search();
         },
         handleCurrentChange(val) {
             this.pageInfo.page = val;
-            this.setCache('page', val);
-            this.setCache('pageSize', this.pageInfo.pageSize);
             this.search();
         },
 
         searchClick() {
-            // this.dataFlag = true;
+            this.dataFlag = true;
             this.__changeSearchOptions();
-            // this.pageInfo.page = +this.getCache('page') || 1;
-            this.setCache('page', 1);
             this.pageInfo.page = 1;
-
             this.search(true);
         },
 
@@ -85,16 +78,9 @@ export default {
         },
 
         afterSearch(data) {
-            console.log(data);
             this.originSearchData = data;
             this.tableList = JSON.parse(JSON.stringify(data.list));
             this.pageInfo.itemCount = data.totalCount;
-        },
-        getCache(name) {
-            return localStorage.getItem(`${this.$route.path}--${name}`);
-        },
-        setCache(name, v) {
-            // return localStorage.setItem(`${this.$route.path}--${name}`, v);
         }
     },
     created() {

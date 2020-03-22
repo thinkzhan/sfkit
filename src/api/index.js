@@ -1,8 +1,8 @@
 import { get, post } from 'lib/req';
-
+// import { domain } from 'conf/domain';
 export default {
-    getSystemAuth: get('account/auth/list'),
-    getAdminInfo: get(`account/info`),
-    demoList: get(`demo/list`),
-    demoUpdate: post('demo/update')
+    login: post('login'),
+    logout: post('logout'),
+    list: get('list'),
+    getUser: get('getUser')
 };

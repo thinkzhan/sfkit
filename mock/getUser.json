@@ -1,0 +1,14 @@
+
+{
+    "data": {
+        "userId": 1,
+            "projectId": 1,
+            "projectName": "project",
+            "nickName": "test",
+            "bindStatus": 0,
+            "appName": "app",
+            "qrCodeUrl": null
+    },
+    "msg": "mock数据自动创建，请修改",
+    "code": 200
+}

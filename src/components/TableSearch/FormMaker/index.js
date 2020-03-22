@@ -44,9 +44,6 @@ export default {
     render(h) {
         const self = this;
         const { config } = this;
-        if (config.ui && config.ui.vIf && !config.ui.vIf()) {
-            return null;
-        }
         const components = config.data.map(item => {
             if (!item.type) {
                 return null;
@@ -77,9 +74,10 @@ export default {
             }
             const func = childComponent[item.type];
             const child = func ? func.call(this, h, item, config) : null;
+
             return h('el-form-item', {
                 props: {
-                    label: typeof item.title === 'function' ? item.title() : item.title,
+                    label: item.title,
                     prop: item.model
                 }
             }, [
@@ -104,34 +102,15 @@ export default {
                                 return;
                             }
                             self.$emit('change', self.formModel, item);
-                        },
-                        ...item.on
+                        }
                     },
                     style: {
-                        ...getStyle(item.type, config.ui),
+                        ...getStyle(item.type),
                         ...item.style
                     }
                 }, [
                     child
-                ]),
-                // textarea 输入中字数提示
-                item.type === 'textarea' && item.maxLength ? h('span', {
-                    style: {
-                        'marginLeft': '20px'
-                    },
-                    domProps: {
-                        innerHTML: `${self.formModel[item['model']].length}/${item.maxLength}`
-                    }
-                }): null,
-                item.tip ? h('span', {
-                    style: {
-                        marginLeft: '20px',
-                        color: '#666'
-                    },
-                    domProps: {
-                        innerHTML: typeof item.tip === 'function' ? item.tip(self.formModel) : item.tip
-                    }
-                }): null
+                ])
             ]);
         });
         return h('el-form', {
@@ -176,18 +155,6 @@ export default {
                 }
             },
             deep: true
-        },
-
-        'config.data': {
-            handler(val, oldVal) {
-                val && val.forEach(m => {
-                    const v = typeof m.modelValue === 'function' ? m.modelValue() :
-                        typeof m.modelValue === 'number' ?
-                            String(m.modelValue) :  m.modelValue || '';
-                    this.$set(this.formModel, m.model, v);
-                });
-            },
-            deep: true
         }
     },
     async created() {
@@ -197,7 +164,6 @@ export default {
                     String(m.modelValue) :  m.modelValue || '';
             this.$set(this.formModel, m.model, v);
         });
-
         this.$emit('inited');
     }
 };
