@@ -39,7 +39,7 @@ class Kit {
             })
         } catch (error) {
             console.err('github api间歇性出错，retry');
-            console.err('或者使用：sf offline');
+            console.err('或者使用离线版：sf offline');
             process.exit()
         }
         return branchs
@@ -48,7 +48,7 @@ class Kit {
         await waitPromise(downloadGitReop, 'download...')(`thinkzhan/sfkit#${template}`, dist)
     }
     async install(projectName) {
-        await waitPromise(exec, 'install...')(`cd ${projectName} && npm install`)
+        await waitPromise(exec, 'install...')(`cd ${projectName} && rm -rf .git && npm install`)
         console.info(`done! cd ${projectName} && npm run dev`);
     }
     async askName() {

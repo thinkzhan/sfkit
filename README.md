@@ -3,5 +3,5 @@
 ```
     npm install -g sfcli
 
-    sfcli
+    sf 
 ```
