@@ -1,8 +1,0 @@
-#!/usr/bin/env node
-const Kit = require("../index")
-const offline = process.argv && !!process.argv.find(a => a === 'offline')
-async function run() {
-    await new Kit().init({ offline })
-}
-run()
-
